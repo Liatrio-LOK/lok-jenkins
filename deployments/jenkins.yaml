@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: test-jenkins:latest
+        image: jenkins/jenkins:latest
         ports:
          - containerPort: 8080
            protocol: TCP
