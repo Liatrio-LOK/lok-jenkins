@@ -1,12 +1,12 @@
 sudo: required
 
-language: groovy
+language: python
 
 services:
   - docker
 
 install:
-  - sudo apt-get install yamllint
+  - pip install yamllint
   - docker pull lukasmartinelli/hadolint
 
 script:
