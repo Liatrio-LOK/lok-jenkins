@@ -9,5 +9,5 @@ install:
   - docker pull lukasmartinelli/hadolint
 
 script:
-  - docker run docker run --rm -i lukasmartinelli/hadolint < Dockerfile
+  - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
 
