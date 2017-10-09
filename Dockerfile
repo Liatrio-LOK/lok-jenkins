@@ -2,6 +2,7 @@ FROM jenkins/jenkins:2.83
 
 MAINTAINER "lok@liatrio.com"
 
+ENV ADMIN_PASSWORD="admin123"
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
 #COPY resources/plugins /usr/share/jenkins/ref/plugins
