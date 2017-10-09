@@ -1,0 +1,13 @@
+sudo: required
+
+language: groovy
+
+services:
+  - docker
+
+install:
+  - docker pull lukasmartinelli/hadolint
+
+script:
+  - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
+
