@@ -12,10 +12,8 @@ COPY resources/plugins.txt /usr/share/jenkins/ref/plugins.txt
 #COPY resources/plugins.txt /usr/share/jenkins/ref/
 #COPY resources/security-plugins.txt /usr/share/jenkins/ref/
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt 
-COPY /resources/security.groovy /usr/share/jenkins/ref/security.groovy
-USER root
-RUN "/bin/chown jenkins /usr/share/jenkins/ref/security.groovy"
-USER jenkins
+#COPY /resources/security.groovy /usr/share/jenkins/ref/security.groovy
 #COPY resources/init.groovy.d/install.groovy /usr/share/jenkins/ref/init.groovy.d/install.groovy
-COPY resources/init.groovy.d/security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
+COPY resources/init.groovy.d/1security.groovy /usr/share/jenkins/ref/init.groovy.d/1security.groovy
+COPY resources/init.groovy.d/2security.groovy /usr/share/jenkins/ref/init.groovy.d/2security.groovy
 #COPY resources/init.groovy.d/install.groovy /usr/share/jenkins/ref/init.groovy.d/install.groovy
