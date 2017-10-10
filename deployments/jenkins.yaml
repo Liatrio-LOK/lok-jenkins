@@ -1,3 +1,4 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -12,8 +13,8 @@ spec:
         app: jenkins
     spec:
       containers:
-      - name: jenkins
-        image: jenkins/jenkins:latest
-        ports:
-         - containerPort: 8080
-           protocol: TCP
+        - name: jenkins
+          image: liatrio/lok-jenkins:0.1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
