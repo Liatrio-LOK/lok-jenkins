@@ -25,17 +25,17 @@ spec:
             - name: ADMIN_USERNAME
               valueFrom:
                 configMapKeyRef:
-                  name: credentials-config
+                  name: jenkins-credentials-config
                   key: user.name
             - name: ADMIN_PASSWORD
               valueFrom:
                 configMapKeyRef:
-                  name: credentials-config
+                  name: jenkins-credentials-config
                   key: user.password
       volumes:
         - name: initialization
           configMap:
-            name: security-config
+            name: jenkins-security-config
             items:
               - key: security.groovy
                 path: security.groovy
