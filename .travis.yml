@@ -13,4 +13,5 @@ install:
 script:
   - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
   - yamllint deployments/ services/
+  - echo "Hello Liatrio!"
 
