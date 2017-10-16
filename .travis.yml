@@ -15,8 +15,6 @@ script:
   - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
   - yamllint deployments/ services/
   - docker ps | grep -q lok-jenkins
-  - curl --retry 10 --retry-delay 5 -w "%{http_code}" http://localhost:8080
-  - docker exec lok-jenkins curl --connect-timeout 120 -w "%{http_code}" http://localhost:8080/
   - docker exec lok-jenkins curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ | grep 200
 
 notifications:
