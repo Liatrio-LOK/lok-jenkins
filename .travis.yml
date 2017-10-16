@@ -8,10 +8,13 @@ services:
 install:
   - pip install yamllint
   - docker pull lukasmartinelli/hadolint
+  - docker build -t lok-jenkins .
+  - docker run -d -p 8080:8080 -p 50000:50000 --restart=no --name lok-jenkins lok-jenkins
 
 script:
   - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
   - yamllint deployments/ services/
+  - docker ps | grep -q lok-jenkins
 
 notifications:
   slack:
