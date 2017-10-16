@@ -10,5 +10,5 @@ LOK-jenkins contains the resources required to get jenkins running on kubernetes
 The `jenkins-credentials` configMap is intended to be created from the console using the following command:
 kubectl create configmap jenkins-credentials --from-literal=user.name=<username> --from-literal=user.password=<password>
 
-The `jenkin-security` configMap is intended to be created from the resources/init.groovy.d directory with the following command:
+The `jenkin-security` configMap is intended to be created from the console with the following command:
 kubectl create configmap jenkins-security --from-file={path to this dir}/resources/init.groovy.d/
