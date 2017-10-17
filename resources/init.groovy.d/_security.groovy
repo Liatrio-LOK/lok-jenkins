@@ -27,7 +27,7 @@ plugins.each {
     }
     def plugin = uc.getPlugin(it)
     if (plugin) {
-    	def installFuture = plugin.deploy()
+      def installFuture = plugin.deploy()
       while(!installFuture.isDone()) {
         sleep(3000)
       }
