@@ -7,9 +7,14 @@ metadata:
   name: jenkins
 spec:
   ports:
-    - port: 80
+    - port: 8080
       protocol: TCP
       targetPort: 8080
+      name: ui
+    - port: 8081
+      protocol: TCP
+      targetPort: 8081
+      name: jnlp
   selector:
     app: jenkins
   type: LoadBalancer
