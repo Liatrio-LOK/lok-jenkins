@@ -15,7 +15,7 @@ script:
   - docker run --rm -i lukasmartinelli/hadolint < Dockerfile
   - yamllint deployments/ services/ volumes/
   - docker ps | grep -q lok-jenkins
-  - docker exec lok-jenkins curl -I -X GET http://localhost:8080/ | head -n 1 | grep 200
+  - docker exec lok-jenkins curl -I -X GET -s --retry 6 --retry-delay 10 http://localhost:8080 | grep -q '200 OK'
 
 notifications:
   slack:
