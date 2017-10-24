@@ -7,10 +7,10 @@ LOK-jenkins contains the resources required to get Jenkins running on Kubernetes
 ## Launching on a Cluster
 
 0. If using minikube, launch the cluster with extra memory (default 1GB isn't enough)
-  * `minkube start --memory 8192`
+  * `minikube start --memory 8192`
 
-1. Create config maps (see configmaps/default/README.md)
-  * `kubectl create configmap jenkins-init --from-file='./groovy.init.d'`
+1. Create config maps 
+  * `kubectl create configmap jenkins-init --from-file='configmaps/default/init.groovy.d/'`
   * `kubectl create configmap jenkins-credentials --from-literal=user.name=admin --from-literal=user.password=admin123`
 
 2. Create persistent volume(s)
