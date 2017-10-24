@@ -27,6 +27,8 @@ spec:
               name: jenkins-home
             - mountPath: /var/jenkins_home/init.groovy.d
               name: initialization
+            - mountPath: /usr/share/jenkins/ref/
+              name: configfile
           env:
             - name: ADMIN_USERNAME
               valueFrom:
@@ -47,6 +49,13 @@ spec:
                 path: security.groovy
               - key: _security.groovy
                 path: _security.groovy
+        - name: configfile
+          configMap:
+            name: jenkins-config
+            items:
+              - key: org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
+                path: org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
+            optional: true
         - name: jenkins-home
           emptyDir: {}
           #persistentVolumeClaim:
