@@ -43,10 +43,12 @@ spec:
       volumes:
         - name: initialization
           configMap:
-            name: jenkins-security
+            name: jenkins-init
             items:
               - key: security.groovy
                 path: security.groovy
+              - key: cloudConfig.groovy
+                path: cloudConfig.groovy
               - key: _security.groovy
                 path: _security.groovy
         - name: configfile
