@@ -57,6 +57,5 @@ spec:
                 path: org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
             optional: true
         - name: jenkins-home
-          emptyDir: {}
-          #persistentVolumeClaim:
-          #  claimName: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-home
