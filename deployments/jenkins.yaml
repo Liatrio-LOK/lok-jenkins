@@ -16,7 +16,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: jenkins
-          image: liatrio/lok-jenkins:0.1.0
+          image: liatrio/lok-jenkins:LOK-53
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -26,7 +26,7 @@ spec:
             - mountPath: /var/jenkins_home
               name: jenkins-home
             - mountPath: /var/jenkins_home/init.groovy.d
-              name: initialization
+              name: jenkins-init
             - mountPath: /usr/share/jenkins/ref/
               name: configfile
           env:
@@ -41,16 +41,6 @@ spec:
                   name: jenkins-credentials
                   key: user.password
       volumes:
-        - name: initialization
-          configMap:
-            name: jenkins-init
-            items:
-              - key: security.groovy
-                path: security.groovy
-              - key: cloudConfig.groovy
-                path: cloudConfig.groovy
-              - key: _security.groovy
-                path: _security.groovy
         - name: configfile
           configMap:
             name: jenkins-config
@@ -61,3 +51,6 @@ spec:
         - name: jenkins-home
           persistentVolumeClaim:
             claimName: jenkins-home
+        - name: jenkins-init
+          configMap:
+            name: jenkins-init

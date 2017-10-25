@@ -38,7 +38,7 @@ import com.cloudbees.plugins.credentials.*
 //Installs security plugins at runtime
 def installed = false
 def initialized = false
-def pluginParameter="kubernetes  config-file-provider matrix-auth git workflow-aggregator" //space separated list of plugins
+def pluginParameter="matrix-auth" //space separated list of plugins
 def plugins = pluginParameter.split()
 def instance = Jenkins.getInstance()
 def pm = instance.getPluginManager()

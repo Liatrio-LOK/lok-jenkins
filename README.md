@@ -4,17 +4,24 @@
 
 LOK-jenkins contains the resources required to get Jenkins running on Kubernetes for the LOK project.
 
+## Launching on a Cluster
 
-## Setting up configmaps:
+0. If using minikube, launch the cluster with extra memory (default 1GB isn't enough)
+  * `minikube start --memory 8192`
 
-The `jenkins-credentials` configMap is intended to be created from the console using the following command:
+1. Create config maps 
+  * `kubectl create configmap jenkins-init --from-file='configmaps/default/init.groovy.d/'`
+  * `kubectl create configmap jenkins-credentials --from-literal=user.name=admin --from-literal=user.password=admin123`
 
-```
-kubectl create configmap jenkins-credentials --from-literal=user.name=<username> --from-literal=user.password=<password>
-```
+2. Create persistent volume(s)
+  * `kubectl create -f volumes/`
 
-The `jenkin-security` configMap is intended to be created from the console with the following command:
+3. Create deployment
+  * `kubectl create -f deployments/`
 
-```
-kubectl create configmap jenkins-security --from-file={path to this dir}/resources/init.groovy.d/
-```
+4. Create service
+  * `kubectl create -f services/`
+
+5. (Minikube only) Expose service through minikube
+  * `minikube service jenkins`
+
