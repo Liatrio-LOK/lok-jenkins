@@ -19,5 +19,6 @@ instance.setSecurityRealm(hudsonRealm)
 def strategy = new GlobalMatrixAuthorizationStrategy()
 strategy.add(Jenkins.ADMINISTER, username)
 instance.setAuthorizationStrategy(strategy)
+instance.setSlaveAgentPort(8081)
 
 instance.save()

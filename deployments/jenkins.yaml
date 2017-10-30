@@ -20,11 +20,15 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
           volumeMounts:
             - mountPath: /var/jenkins_home
               name: jenkins-home
             - mountPath: /var/jenkins_home/init.groovy.d
               name: jenkins-init
+            - mountPath: /usr/share/jenkins/ref/
+              name: configfile
           env:
             - name: ADMIN_USERNAME
               valueFrom:
@@ -37,6 +41,13 @@ spec:
                   name: jenkins-credentials
                   key: user.password
       volumes:
+        - name: configfile
+          configMap:
+            name: jenkins-config
+            items:
+              - key: org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
+                path: org.jenkinsci.plugins.configfiles.GlobalConfigFiles.xml
+            optional: true
         - name: jenkins-home
           persistentVolumeClaim:
             claimName: jenkins-home
