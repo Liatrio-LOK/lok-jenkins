@@ -12,7 +12,7 @@ apiVersion: v1
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: jenkins-persistent
+          name: jenkins-ephemeral
       type: Source
     output:                       
       to:
